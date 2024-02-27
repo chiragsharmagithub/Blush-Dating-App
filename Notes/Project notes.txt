@@ -1,0 +1,42 @@
+2. Building a walking skeleton Part One - API
+Part 6: Intro to Entity Framework
+
+What is Entity Framework?
+
+- An Object Relational Mapper (ORM)
+- Translates our code into SQL commands that update our tables in the database 
+
+EF Converts our code to SQL commands.
+EG: DbContext.Users.Add(new User {Id = 4, Name = John}) -> INSERT INTO Users(Id, Name) VALUES(4, John)
+
+Entity Framework Features
+
+- Querying: EF helps in querying  data from databases using LINQ (Language Integrated Query)
+- Mapping: EF maps your classes with 
+- Change Tracking: 
+- Saving
+- Concurrency
+- Transactions
+- Caching
+- Build-in conventions
+- Migrations
+
+How does EF work?
+
+1. Create an instance of DbContext
+2. Add entities to it
+3. Use LINQ to query and filter the entities
+4. Call SaveChanges() on the context to save changes made to the entities
+5. The Context tracks all changes done to the objects added to it
+   It also keeps track of what has been deleted or updated
+6. When calling SaveChanges(), EF generates appropriate SQL statements based on the state of each entity
+7. If there are any conflicts with concurrent updates by other users, EF will handle them for you 
+8. Once the transaction is complete, EF closes the connection to the DB
+
+
+2.12
+
+How to optimize your system?
+
+Make Async calls whereever required. [Best practice]
+

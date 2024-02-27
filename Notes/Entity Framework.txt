@@ -1,0 +1,52 @@
+Why use EF instead of writing raw SQL queries?
+1. Code reusability and maintainability
+- We can reuse methods across multiple projects or even different databases 
+2. Type safety
+3. Easier debugging/error handling
+- If we write raw SQL, if there's an error it will be more difficult to understand what went wrong because you don't have access
+
+How does EF work with ADO.NET?
+- EF sits on top of ADO.Net providers such as System.Data.SqlClient for connecting to SQL Server
+
+The DbContext class
+- The entry point to any interaction with the database using EF
+- It represents a session with the database and caches all entities being tracked by it
+- When you call Add() on a DbSet<T>, EF starts tracking the entity so  when SaveChanges() is called, EF will generate
+- When you call SaveChanges(), EF will generate an appropriate set of SQL statements based on what has changed since last save
+- When you call Add() / Remove() on an entity, it's added to the ChangeTracker which keeps track of changes made to
+- Allows us to query the database, add new objects, delete existing ones, etc.
+
+DbSet<T> property
+- Represents a table in the database
+- Provides CRUD operations against this table
+- Can be accessed through the DbContext instance like db.Products
+
+Entity classes vs Database Tables
+- Entity classes are C# classes representing rows in your database tables
+- They have properties which map to columns in those tables
+- You don't need to create these entity classes manually if you are working with an existing database
+- If you are creating a new database from scratch then yes, you will need to define these classes yourself
+
+Lifecycle of an object in EF
+- When we retrieve data from the database,  EF creates instances of our entity classes
+- These objects are not "live" until they are attached to a DbContext
+- Once an object is attached to a context, it becomes part of the change tracking system
+- Changes made to these objects will be automatically detected by EF when SaveChanges() is called
+- Detached objects remain unchanged until they are either added back to the context or marked as modified
+- Deleted objects become detached once they are removed from the context
+
+Querying Data with LINQ to Entities
+- LINQ to Entities allows us to write LINQ queries against our entity classes   
+- This enables us to perform complex queries against our data without having to write raw SQL 
+- EF translates these LINQ expressions into appropriate SQL statements
+
+Using Stored Procedures with EF
+- EF supports calling stored procedures just like how we call functions in SQL
+- EF executes the procedure and returns results similar to executing a SELECT statement
+- EF also provides support for output parameters and return values
+- In some cases, EF may generate additional code to handle certain scenarios (e.g., multiple result sets)   
+
+Working with Complex Types
+- EF can also work with complex types - i.e., custom CLR objects that contain other complex types
+- To use a complex type in a LINQ  to Entities query, you must include its namespace in the query
+- EF will translate the query into SQL accordingly      
