@@ -40,3 +40,28 @@ How to optimize your system?
 
 Make Async calls whereever required. [Best practice]
 
+
+_________________________________________________________________________________________________
+
+Section 2 Summary:
+
+Implement the basic API functionality and have an introductory understanding of:
+
+1. Using the dotnet CLI
+2. API Controllers and Endpoints
+3. Entity Framework
+4. The API Project Structure
+5. Configuration and Environment variables
+6. Source control
+
+Section 3:
+
+1. Using the Angular CLI
+2. How to create a new Angular app
+3. The Angular project files
+4. The Angular Bootstrap proces
+5. Using the ANgular HTTP Client Service
+6. Running an Angular app over HTTPS
+7. How to add packages using NPM
+
+ 

@@ -33,6 +33,12 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+// CORS is a security feature that allows a server to indicate any other origins (domain, scheme, or port) than its own from which a browser should permit loading of resources. It is needed when a website wants to request resources from another domain, which is known as Cross-Origin HTTP request.
+// So the above code is allowing the website running on http://localhost:4200 to access the resources of the application.
+
+app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod()
+    .WithOrigins("http://localhost:4200"));
+
 // Define an array of weather summaries
 var summaries = new[]
 {
