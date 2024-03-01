@@ -4,15 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using API.Data;
 using API.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
-
-    [ApiController]
-    [Route("api/[controller]")]
-    public class UsersController : ControllerBase
+    // We have inherited properties from the BaseApiController
+    public class UsersController : BaseApiController
     {
         public readonly DataContext _context;
         public UsersController(DataContext context)
@@ -31,6 +30,7 @@ namespace API.Controllers
         // Enumerators can be used to read the data in the collection, but they cannot be used to modify the underlying collection.
 
         // Async code
+        [AllowAnonymous]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<AppUser>>> GetUsersAsync() 
         {
@@ -47,7 +47,9 @@ namespace API.Controllers
         // }
 
         // api/users/2
+        [Authorize]
         [HttpGet("{id}")]
+        
         public async Task<ActionResult<AppUser>> GetUserAsync(int id) 
         {
             var user = await _context.Users.FindAsync(id);

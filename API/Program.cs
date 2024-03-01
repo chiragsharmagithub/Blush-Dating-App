@@ -1,5 +1,11 @@
+using System.Text;
 using API.Data;
+using API.Extensions;
+using API.Interfaces;
+using API.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using SQLitePCL;
 
 // Create a new WebApplication builder
@@ -10,16 +16,19 @@ var _config = builder.Configuration;
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
+// Configure Services (below)
+
+builder.Services.AddApplicationServices(_config);
 builder.Services.AddControllers();
+builder.Services.AddCors();
+builder.Services.AddIdentityServices(_config);
+
+// Configure (below)
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Configure the DbContext to use SQLite
-builder.Services.AddDbContext<DataContext>(options => 
-{
-    // We can acces database using this conenction string
-    options.UseSqlite(_config.GetConnectionString("DefaultConnection")); 
-});
 
 // Build the web application
 var app = builder.Build();
@@ -33,11 +42,26 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseRouting();
+
 // CORS is a security feature that allows a server to indicate any other origins (domain, scheme, or port) than its own from which a browser should permit loading of resources. It is needed when a website wants to request resources from another domain, which is known as Cross-Origin HTTP request.
 // So the above code is allowing the website running on http://localhost:4200 to access the resources of the application.
 
 app.UseCors(x => x.AllowAnyHeader().AllowAnyMethod()
     .WithOrigins("http://localhost:4200"));
+
+app.UseAuthentication();
+app.UseAuthorization();
+
+// Map the controllers to the application
+app.MapControllers();
+
+// Run the application
+app.Run();
+
+
+// -----------------------------------------------------------------------------------------
+
 
 // Define an array of weather summaries
 var summaries = new[]
@@ -72,12 +96,6 @@ app.MapGet("/testapi", () =>
 })
 .WithName("TestApi")
 .WithOpenApi();
-
-// Map the controllers to the application
-app.MapControllers();
-
-// Run the application
-app.Run();
 
 // Define a record for a weather forcast
 record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
