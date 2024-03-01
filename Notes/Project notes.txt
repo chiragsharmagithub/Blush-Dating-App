@@ -60,8 +60,63 @@ Section 3:
 2. How to create a new Angular app
 3. The Angular project files
 4. The Angular Bootstrap proces
-5. Using the ANgular HTTP Client Service
-6. Running an Angular app over HTTPS
+5. Using the Angular HTTP Client Service
+6. Running an Angular app over HTTPS (use SSL certificate)
 7. How to add packages using NPM
 
- 
+Section 4: Authentication
+
+Implement basic authentication in our app and have an undestanding of:
+
+1. How to store passwords in the database
+2. Using Inheritance in C# - DRY
+3. Using C# debugger
+4. Using Data Transfer Objects (DTOs)
+5. Validation
+6. JSON Web Tokens (JWTs)
+7. Using services in C#
+8. Middleware
+9. Extension methods - DRY
+
+1. Safe Storage of passwords
+
+Option 1 - Storing in clear text (database) - Store the passwords as it is in users table.
+
+Option 2 - Hasing the passwords
+   The problem is: is a hacker gets your passwordHash, they can easily get users passwords using online libraries which has almost all the versions of hash stored.
+
+Option 3 - Hashing and salting the password - BETTER
+In this example, we will use hashing  and salting the password. This means that when  a user logs into your application, you hash their OPTION, but more complex to implement.
+
+
+6. JSON Web Tokens (JWTs)
+
+How to authenticate an API?
+   API is not something we maintain a session state with.
+   We simply make a request to our API and it returns data to us.
+      And then relationship is finished with the API unitl we need to make another request.
+
+Tokens
+   Tokens are a good thing to use with an API because they're small enough to send with every single request.
+
+JSON Web Tokens (JWT)
+   Industry Standard for tokens (RFC 7519)
+   Self contained and can contain:
+      Credentials
+      Claims
+      Other Information
+
+JWT structure - JWT is a long string having 3 parts, namely, 
+   Header: Algorithm & Token type,
+   Payload: Data (User related information like username, expiry time etc),
+   Verify Signature : A digital signature used by the sender to verify the token’s integrity. (Encrypted)
+
+We add an authentication header to the request and then the server will take a look at the token and verify that the token is valid.
+Server is having the private key, using that key, server verifies  whether the token is valid or not, without needing to make a call to database. 
+
+Benefits of JWT:
+   No session to manage - JWTs are self contained tokens
+   Portable - A single token can be used with multiple backends.
+   No Cookies required - mobile friendly.
+   Performance - Once a token is issued, there is no need to make a database request to verify a users authentication.
+   
