@@ -1,3 +1,15 @@
+dotnet watch run 
+
 dotnet ef database drop
 
 dotnet ef database update
+
+ng serve 
+
+ng g --help
+
+ng g c componentName
+ng g c componentName --skip-tests
+
+ng g s serviceName
+ng g s serviceName --skip-tests
