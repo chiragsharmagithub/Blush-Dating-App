@@ -3,7 +3,7 @@
   data-bs-theme="dark"
 >
   <div class="container">
-    <a class="navbar-brand" href="#">Blush</a>
+    <a class="navbar-brand" href="#">Blush &#9829;</a>
     <button
       class="navbar-toggler"
       type="button"
@@ -43,6 +43,9 @@
         <li class="nav-item">
           <a class="nav-link" *ngIf="userLoggedIn" href="#">Messages</a>
         </li>
+        <li>
+          <a class="nav-link">{{ testAsync }}</a>
+        </li>
       </ul>
 
       <div class="dropdown" *ngIf="userLoggedIn">
@@ -52,7 +55,7 @@
           data-bs-toggle="dropdown"
           aria-expanded="false"
         >
-          Welcome {{ model.username }}
+          Welcome user
         </button>
 
         <ul class="dropdown-menu dropdown-menu-dark mt-2">
