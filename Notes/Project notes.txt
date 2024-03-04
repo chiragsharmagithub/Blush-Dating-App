@@ -128,27 +128,27 @@ Implement the login and register functionality into the app as well as understan
 1. Creating components using Angular CLI
 2. Using Angular template forms
 3. Using Angular services
-4. Understanding Obserables
+4. Understanding Observables
 5. Using Angular structural directives to conditionally display elements on a page.
 6. Component communication from parent to child.
 7. Component communication from child to parent.
 
-4. Understanding Obserables
+4. Understanding Observables
    New Standard for managing async data included in ES7 (ES2016).
    
    An Observable is a stream of data that you subscribe to.
 
    Introduced in Angular v2
 
-   Obserables are lazy collections of multiple values over time.
+   Observables are lazy collections of multiple values over time.
 
-   You can think of Obserables like a newsletter:
+   You can think of Observables like a newsletter:
       Only subscribers of the newsletter receive the newsletter.
       If no-one subscribes to the newsletter it probably will not be printed.
    Tip:
       If we make a HTTP request, then that request will automatically completed, means don't have to unsubscribes the Observable. 
 
-Promise                                         -                 Obserables
+Promise                                         -                 Observables
       
 Provides a single future value                  -     Emits multiple values over time.
 Not lazy                                        -     lazy
@@ -162,5 +162,17 @@ EG:
    <li *ngFor='let member of service.getMembers() | async'> {{ member.username }} </li>
 
 Advantages: 
-   It automatically subscribes/ unsubscribes from the Obserables
+   It automatically subscribes/ unsubscribes from the Observables
 
+Tips:
+   Angular Services:
+      Angular Services are singleton, this make them a good place to share data between componets.
+   Observables:
+      Looked into ways how we can subscribe to an Observables in different ways.
+      Async pipe:
+         Async pipe automatically subscribe and unsubscribes from Observables without us needing to manually use the subscribe method.
+   Use of pipe:
+      Use of pipe along with map to change the data returning from a HTTP request.
+   Communication:
+      Parent to child communication using property binding
+      Child to parent communication using event binding
