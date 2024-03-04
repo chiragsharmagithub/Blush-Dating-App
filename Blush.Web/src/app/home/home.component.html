@@ -19,7 +19,9 @@
                 <!-- Child to parent communication (using event binding) -->
                 <!-- <app-register (cancelRegister)="registerToggle()"></app-register> -->
 
-                <app-register [usersDataFromParent]="users" (cancelRegister)="cancelRegisterMode($event)"></app-register>
+                <!-- <app-register [usersDataFromParent]="users" (cancelRegister)="cancelRegisterMode($event)"></app-register> -->
+                
+                <app-register (cancelRegister)="cancelRegisterMode($event)"></app-register>
             </div>
         </div>
     </div>

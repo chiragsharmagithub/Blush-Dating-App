@@ -38,6 +38,19 @@ export class AccountService implements OnInit {
     );
   }
 
+  // Once a user is registered, we will consider him to be loggedin.
+  registerUser(model: any): Observable<any> {
+    return this.http.post<any>(this.baseUrl + 'account/register', model).pipe(
+      map((user: User) => {
+        if(user) {
+          localStorage.setItem('user', JSON.stringify(user));
+          this.currentUserSource.next(user);
+        }
+        // return user;
+      })
+    )
+  }
+
   setCurrentUser(user: User) {
     this.currentUserSource.next(user);
   }

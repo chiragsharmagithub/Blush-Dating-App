@@ -17,22 +17,22 @@ export class HomeComponent implements OnInit{
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.getUsers();
+    // this.getUsers();
   }
 
   registerToggle() {
     this.registerMode = !this.registerMode;
   }
 
-  getUsers() {
-    this.http.get("http://localhost:5045/api/users")
-        .subscribe(response => {
-          this.users = response;
-          console.log("Users = " + JSON.stringify(this.users));
-        }, error => {
-          console.log(error);
-        });
-  }
+  // getUsers() {
+  //   this.http.get("http://localhost:5045/api/users")
+  //       .subscribe(response => {
+  //         this.users = response;
+  //         console.log("Users = " + JSON.stringify(this.users));
+  //       }, error => {
+  //         console.log(error);
+  //       });
+  // }
 
   cancelRegisterMode(event: boolean) {
     this.registerMode = event;
