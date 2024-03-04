@@ -13,7 +13,13 @@
     <div *ngIf="registerMode" class="container">
         <div class="row justify-content-center">
             <div class="col-4">
-                <app-register [usersDataFromParent]="users"></app-register>
+                <!-- Parent to child communication (using property binding) -->
+                <!-- <app-register [usersDataFromParent]="users"></app-register>  -->
+
+                <!-- Child to parent communication (using event binding) -->
+                <!-- <app-register (cancelRegister)="registerToggle()"></app-register> -->
+
+                <app-register [usersDataFromParent]="users" (cancelRegister)="cancelRegisterMode($event)"></app-register>
             </div>
         </div>
     </div>

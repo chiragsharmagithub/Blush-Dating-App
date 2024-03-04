@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -11,18 +11,18 @@ import { FormsModule } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
   @Input() usersDataFromParent: any; 
+  @Output() cancelRegister = new EventEmitter();
+
   model: any = {};
   constructor() {}
 
-  ngOnInit() {
-    
-  }
+  ngOnInit() {}
 
   register() {
     console.log(this.model);
   }
 
   resetForm() {
-    console.log("Cancelled");
+    this.cancelRegister.emit(false);
   }
 }
