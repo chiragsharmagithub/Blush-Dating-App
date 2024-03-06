@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { Observable, ReplaySubject, map } from 'rxjs';
-import { User } from '../Models/user';
+import { User } from '../_models/user';
 
 // Services are injectible - Means we can inject our services into other services and components.
 // Services are singleton - Means that the data stored inside a service doesn't get destroyed until our application is closed.  
