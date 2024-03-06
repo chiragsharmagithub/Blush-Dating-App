@@ -3,15 +3,19 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NavbarComponent } from './navbar/navbar.component';
-import { User } from './Models/user';
-import { AccountService } from './Services/account.service';
-import { HomeComponent } from './home/home.component';
+//
+import { AccountService } from './_services/account.service';
+import { SharedModule } from './_modules/shared.module';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, HttpClientModule, NavbarComponent, HomeComponent],
+  imports: [
+    CommonModule, 
+    RouterOutlet, 
+    HttpClientModule, 
+    SharedModule
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -27,7 +31,16 @@ export class AppComponent implements OnInit{
   }
 
   setCurrentUser() {
-    const user: User = JSON.parse(localStorage.getItem('user') || '{}');
+    var user: any;
+    if(localStorage.getItem('user') === undefined || localStorage.getItem('user') === null) {
+      user = {};
+      localStorage.setItem('user', '{}');
+    }
+    else {
+      user = localStorage.getItem('user');
+    }
+    console.log("AppComponent, user = " + JSON.stringify(user));
+    // const user: User = JSON.parse(localStorage.getItem('user') || '{}');
     this.accountService.setCurrentUser(user);
   }
 

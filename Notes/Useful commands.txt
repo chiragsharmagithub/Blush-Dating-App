@@ -13,3 +13,5 @@ ng g c componentName --skip-tests
 
 ng g s serviceName
 ng g s serviceName --skip-tests
+
+ng g m maduleName --flat
