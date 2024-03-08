@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from '../navbar/navbar.component';
+import { TestErrorsComponent } from '../Errors/test-errors/test-errors.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { errorInterceptor } from '../_interceptors/error.interceptor';
 
 
 
@@ -8,10 +11,15 @@ import { NavbarComponent } from '../navbar/navbar.component';
   declarations: [],
   imports: [
     CommonModule,
-    NavbarComponent
+    NavbarComponent,
+    TestErrorsComponent
+  ],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: errorInterceptor, multi: true}
   ],
   exports: [
-    NavbarComponent
+    NavbarComponent,
+    TestErrorsComponent
   ]
 })
 export class SharedModule { }

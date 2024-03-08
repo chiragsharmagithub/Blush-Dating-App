@@ -15,3 +15,5 @@ ng g s serviceName
 ng g s serviceName --skip-tests
 
 ng g m maduleName --flat
+
+ng g interceptor interceptorName --skip-tests

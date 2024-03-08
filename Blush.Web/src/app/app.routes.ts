@@ -5,6 +5,9 @@ import { MemberDetailsComponent } from './members/member-details/member-details.
 import { ListsComponent } from './lists/lists.component';
 import { MessagesComponent } from './messages/messages.component';
 import { AuthGuard } from './_guards/auth.guard';
+import { TestErrorsComponent } from './Errors/test-errors/test-errors.component';
+import { NotFoundComponent } from './Errors/not-found/not-found.component';
+import { ServerErrorComponent } from './Errors/server-error/server-error.component';
 
 export const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -16,9 +19,12 @@ export const routes: Routes = [
             {path: 'members', component: MemberListComponent, canActivate: [AuthGuard]},
             {path: 'members/:id', component: MemberDetailsComponent},
             {path: 'lists', component: ListsComponent},
-            {path: 'messages', component: MessagesComponent}
-        ]
+            {path: 'messages', component: MessagesComponent},
+        ],
     },
-    {path: '**', component: HomeComponent, pathMatch: 'full' }, // Wildcard route for any unmatched URL
+    {path: 'testerrors', component: TestErrorsComponent},
+    {path: 'not-found', component: NotFoundComponent},
+    {path: 'server-error', component: ServerErrorComponent},
+    {path: '**', component: NotFoundComponent, pathMatch: 'full' }, // Wildcard route for any unmatched URL
 ];
  

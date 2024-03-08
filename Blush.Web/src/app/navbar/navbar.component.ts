@@ -28,11 +28,10 @@ export class NavbarComponent implements OnInit {
       private router: Router,
       private toastr: ToastrService
     ) 
-    { 
-
-    }
+    { }
 
   ngOnInit(): void {
+    console.log("NavBar component");
     this.getCurrentUser();
    
     // this.accountService.currentUser$.subscribe(res => {
@@ -49,9 +48,19 @@ export class NavbarComponent implements OnInit {
         }, error => {
           console.log(error);
           // this.toastr.error(error.error);
-          this.toastr.error(error.error, 'Login error', {
-            positionClass: 'toast-bottom-right'
-          });
+          if(error.error && error.error.errors) {
+            this.toastr.error(error.error.errors, 'Login error', {
+              positionClass: 'toast-bottom-right'
+            });
+            console.log("IF");
+          }
+          else {
+            this.toastr.error(error.error, 'Login error', {
+              positionClass: 'toast-bottom-right'
+            });
+            console.log("ELSE");
+          }
+          
         });
   }
 
@@ -76,16 +85,32 @@ export class NavbarComponent implements OnInit {
   }
 
   getCurrentUser() {
-    return this.accountService.currentUser$.pipe(
-      map( user => {
-        if(Object.keys(user).length != 0) {
+    // return this.accountService.currentUser$.pipe(
+    //   map( user => {
+    //     if(Object.keys(user).length != 0) {
+    //       this.userLoggedIn = true;
+    //       this.model = user;
+    //     }
+    //     else {
+    //       this.userLoggedIn = false;
+    //     }
+    //   })
+    // )
+
+      this.accountService.currentUser$.subscribe(user => { 
+        console.log("Object.keys(user).length = " + Object.keys(user).length);
+        console.log(user);
+        if(Object.keys(user).length > 0 && user.username != undefined) {
           this.userLoggedIn = true;
           this.model = user;
+          console.log("User Logged In!");
+          console.log("user.username = " + user.username);
         }
         else {
           this.userLoggedIn = false;
         }
+        console.log("Model = ");
+        console.log(this.model);
       })
-    )
   }
 }

@@ -186,3 +186,13 @@ Implement routing in our Angular app and have an understanding of:
 2. Adding a bootstrap theme
 3. Using Angular route guards
 4. Using a shared module
+
+Section 7: Error Handling
+
+Implement global error handling in both the API and the Angular application.
+Also to have an understanding of:
+
+1. API Middleware
+2. Angular Interceptors
+3. Troubleshooting exceptions
+

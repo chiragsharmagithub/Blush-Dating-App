@@ -35,11 +35,14 @@ export class AppComponent implements OnInit{
     if(localStorage.getItem('user') === undefined || localStorage.getItem('user') === null) {
       user = {};
       localStorage.setItem('user', '{}');
+      console.log("AppComponent, SetCurrent: ", localStorage.getItem('user'));
     }
     else {
       user = localStorage.getItem('user');
+      console.log("AppComponent, SetCurrent: ", localStorage.getItem('user'));
     }
-    console.log("AppComponent, user = " + JSON.stringify(user));
+    console.log("AppComponent, user = ");
+    console.log(user);
     // const user: User = JSON.parse(localStorage.getItem('user') || '{}');
     this.accountService.setCurrentUser(user);
   }
