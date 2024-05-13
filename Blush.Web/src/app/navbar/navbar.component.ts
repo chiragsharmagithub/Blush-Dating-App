@@ -48,18 +48,18 @@ export class NavbarComponent implements OnInit {
         }, error => {
           console.log(error);
           // this.toastr.error(error.error);
-          if(error.error && error.error.errors) {
-            this.toastr.error(error.error.errors, 'Login error', {
-              positionClass: 'toast-bottom-right'
-            });
-            console.log("IF");
-          }
-          else {
-            this.toastr.error(error.error, 'Login error', {
-              positionClass: 'toast-bottom-right'
-            });
-            console.log("ELSE");
-          }
+          // if(error.error && error.error.errors) {
+          //   this.toastr.error(error.error.errors, 'Login error', {
+          //     positionClass: 'toast-bottom-right'
+          //   });
+          //   console.log("IF");
+          // }
+          // else {
+          //   this.toastr.error(error.error, 'Login error', {
+          //     positionClass: 'toast-bottom-right'
+          //   });
+          //   console.log("ELSE");
+          // }
           
         });
   }

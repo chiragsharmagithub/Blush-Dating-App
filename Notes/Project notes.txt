@@ -187,7 +187,7 @@ Implement routing in our Angular app and have an understanding of:
 3. Using Angular route guards
 4. Using a shared module
 
-Section 7: Error Handling
+Section 7: Error Handling (CHRG: have a look)
 
 Implement global error handling in both the API and the Angular application.
 Also to have an understanding of:
@@ -196,3 +196,104 @@ Also to have an understanding of:
 2. Angular Interceptors
 3. Troubleshooting exceptions
 
+Section 8: Extending the API
+
+Implement furthur functionality into our API and gain an understanding of:
+
+1. Entity Framework relationships
+2. Entity Framework conventions
+3. Seeding Data into the database
+4. The repository pattern
+5. Using AutoMapper
+
+Use the below json code to generate randon-json data
+
+[
+  '{{repeat(5)}}',
+  {
+    UserName: '{{firstName("female")}}',
+    Gender: 'female',
+    DateOfBirth: '{{date(new Date(1950, 0, 1), new Date(1999, 11, 31), "YYYY-MM-dd")}}',
+    KnownAs: function(){ return this.UserName; },
+    Created: '{{date(new Date(2019, 0, 1), new Date(2020, 5, 30), "YYYY-MM-dd")}}',
+    LastAct: '{{date(new Date(2020, 4, 1), new Date(2020, 5, 30), "YYYY-MM-dd")}}',
+    Introduction: '{{lorem(1, "paragraphs")}}',
+    LookingFor: '{{lorem(1, "paragraphs")}}',
+    Interests: '{{lorem(1, "paragraphs")}}',
+    City: '{{city()}}',
+    Country: '{{country()}}',
+    Photos: [
+      {
+        url: function(num) {
+          return 'https://randomuser.me/api/portraits/women/' + num.integer(1, 99) + '.jpg';
+        },
+        isMain: true
+      }
+    ]
+  }
+]
+
+URL: https://json-generator.com/#
+
+REPOSITORY PATTERN
+
+A Repository mediates between the domain and data mapping layers, acting like an in-memory domain object collection.
+
+DBContext is basically translating the logic, the queries  and operations that we need to perform on our Database and that we're writing in a controller.
+And fetching out the data from database & returning it to the controller so that it can be returned to CLIENT.
+
+After adding REPOSITORY PATTERN
+
+We are introducing a new layer (Layer of abstraction) in between Controller & DBContext classes.
+So instead of the controller going directly to the DBContext, it then uses our repository and executes the methods inside there.
+Now, the repository is going to use the DBContext to go and extract the logic inside this
+
+Benefits:
+1. It encapsulates the logic
+2. Reduces Duplicate query logic
+3. Promotes testability (It is easier to test against an interface of a repository than it is to test against a DB Context)
+
+Advantages:
+
+1. Minimizes duplicate query logic
+2. Decouples application from persistence Framework
+3. All Database queries are centralized and not scattered throughout the app.
+4. Allows us to change ORM (Object Relational Mapping) easily
+5. Promotes testability
+   We can easily Mock a Repository interface, testing against the DBContext is more dificult.
+
+
+Disadvantages:
+
+1. Abstraction of an abstraction
+   Entity Framework is an abstraction, A repository is an abstraction from entity framework.
+2. Each root entity should have it's own repository which means more code.
+3. Also need to implement the UnitOfWork pattern to control transactions.
+
+
+AUTOMAPPER
+
+AutoMapper helps to map data from one object to another.
+
+
+
+
+
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------
+Blackbox AI - START
+
+The Repository Pattern is a design pattern that follows the principles of the Model–View–ViewModel (MVVM) architectural pattern by providing a 
+
+A repository  acts as a layer between your data model (the EF DbContext) and the service that needs to interact with it. This allows you to hide all
+The Repository Pattern provides a layer of abstraction between the data access layer (DAL) and the business logic or domain model. It acts
+The Repository Pattern provides a layer of abstraction between the data model (the EF DbContext) and the service layer that uses the data.
+The Repository Pattern provides a layer of abstraction between the data access layer (DAL) and the business logic or domain model. It acts
+The Repository Pattern provides a layer of abstra
+
+Blackbox AI - END
+------------------------------------------------------------------------------------------------------------------
