@@ -11,7 +11,7 @@ namespace API.Helpers
 {
     public class AutoMapperProfiles : Profile
     {
-        protected internal AutoMapperProfiles()
+        public AutoMapperProfiles()
         {
             CreateMap<AppUser, MemberDto>()
                 .ForMember(dest => dest.PhotoUrl, opt => opt.MapFrom(src => 

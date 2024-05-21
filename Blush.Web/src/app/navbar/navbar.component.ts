@@ -47,19 +47,19 @@ export class NavbarComponent implements OnInit {
           this.router.navigateByUrl('/members');
         }, error => {
           console.log(error);
-          // this.toastr.error(error.error);
-          // if(error.error && error.error.errors) {
-          //   this.toastr.error(error.error.errors, 'Login error', {
-          //     positionClass: 'toast-bottom-right'
-          //   });
-          //   console.log("IF");
-          // }
-          // else {
-          //   this.toastr.error(error.error, 'Login error', {
-          //     positionClass: 'toast-bottom-right'
-          //   });
-          //   console.log("ELSE");
-          // }
+          this.toastr.error(error.error);
+          if(error.error && error.error.errors) {
+            this.toastr.error(error.error.errors, 'Login error', {
+              positionClass: 'toast-bottom-right'
+            });
+            console.log("IF");
+          }
+          else {
+            this.toastr.error(error.error, 'Login error', {
+              positionClass: 'toast-bottom-right'
+            });
+            console.log("ELSE");
+          }
           
         });
   }

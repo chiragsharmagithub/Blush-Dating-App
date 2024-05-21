@@ -297,3 +297,25 @@ The Repository Pattern provides a layer of abstra
 
 Blackbox AI - END
 ------------------------------------------------------------------------------------------------------------------
+
+
+
+9. Building the user interface
+
+Implement thhe components that make up thhe user interface in our application and gain an understanding of:
+
+1. Using Typescript types
+2. Using the async pipe
+3. Using bootstrap for styling 
+4. Basic css tricks to enhance the look
+5. Using a 3rd party photo gallery
+
+
+
+
+----------------------------------------------------------------------------------------
+
+Study about:
+
+1. Interceptors
+2. Activated Route

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { Observable, ReplaySubject, map } from 'rxjs';
 import { User } from '../_models/user';
+import { environment } from '../../../environments/environment';
 
 // Services are injectible - Means we can inject our services into other services and components.
 // Services are singleton - Means that the data stored inside a service doesn't get destroyed until our application is closed.  
@@ -12,7 +13,8 @@ import { User } from '../_models/user';
   providedIn: 'root'
 })
 export class AccountService implements OnInit {
-  baseUrl = "http://localhost:5045/api/";
+  // baseUrl = "http://localhost:5045/api/";
+  baseUrl = environment.apiUrl;
   private currentUserSource = new ReplaySubject<User>(1);  // Keeps the last value forever
   currentUser$ = this.currentUserSource.asObservable();   // Expose as an observable so anyone can subscribe to it.
 
