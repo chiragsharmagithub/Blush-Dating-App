@@ -50,3 +50,11 @@ Working with Complex Types
 - EF can also work with complex types - i.e., custom CLR objects that contain other complex types
 - To use a complex type in a LINQ  to Entities query, you must include its namespace in the query
 - EF will translate the query into SQL accordingly      
+
+Command:
+dotnet ef migrations add ExtendedUserEntity
+    In summary, the “dotnet ef migrations add [MigrationName]” command captures model changes since the last migration and generates migration files representing those changes. It’s a crucial step in maintaining a synchronized database schema with your application’s data model.
+
+dotnet ef database update
+    To update your database to the latest migration.
+

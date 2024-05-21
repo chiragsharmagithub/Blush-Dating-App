@@ -15,3 +15,13 @@ ng g s serviceName
 ng g s serviceName --skip-tests
 
 ng g m maduleName --flat
+
+ng g interceptor interceptorName --skip-tests
+
+dotnet ef migrations add ExtendedUserEntity
+    In summary, the “dotnet ef migrations add [MigrationName]” command captures model changes since the last migration and generates migration files representing those changes. It’s a crucial step in maintaining a synchronized database schema with your application’s data model.
+
+dotnet ef migrations remove
+    Remove the migrations
+
+dotnet ef database update
