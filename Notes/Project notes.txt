@@ -293,7 +293,7 @@ A repository  acts as a layer between your data model (the EF DbContext) and the
 The Repository Pattern provides a layer of abstraction between the data access layer (DAL) and the business logic or domain model. It acts
 The Repository Pattern provides a layer of abstraction between the data model (the EF DbContext) and the service layer that uses the data.
 The Repository Pattern provides a layer of abstraction between the data access layer (DAL) and the business logic or domain model. It acts
-The Repository Pattern provides a layer of abstra
+The Repository Pattern provides a layer of abstraction.
 
 Blackbox AI - END
 ------------------------------------------------------------------------------------------------------------------
@@ -305,11 +305,11 @@ Blackbox AI - END
 Implement thhe components that make up thhe user interface in our application and gain an understanding of:
 
 1. Using Typescript types
-2. Using the async pipe
+2. Using the Interceptor to send JWT tokens
 3. Using bootstrap for styling 
 4. Basic css tricks to enhance the look
 5. Using a 3rd party photo gallery
-
+6. Using Route params
 
 
 
