@@ -6,6 +6,8 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { errorInterceptor } from '../_interceptors/error.interceptor';
 import { JwtInterceptor } from '../_interceptors/jwt.interceptor';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { loadingInterceptor } from '../_interceptors/loading.interceptor';
 
 @NgModule({
   declarations: [],
@@ -13,16 +15,19 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
     CommonModule,
     NavbarComponent,
     TestErrorsComponent,
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
+    NgxSpinnerModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: errorInterceptor, multi: true},
-    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: loadingInterceptor, multi: true}
   ],
   exports: [
     NavbarComponent,
     TestErrorsComponent,
-    TabsModule
+    TabsModule,
+    NgxSpinnerModule
   ]
 })
 export class SharedModule { }
