@@ -313,6 +313,20 @@ Implement thhe components that make up thhe user interface in our application an
 
 
 
+Section 10: Updating Resources
+
+Implement persistence when updating resources in the API and gaining an understanding of:
+
+1. Angular template forms
+2. The CanDeactivate Route Guard
+3. The @ViewChild Decorator
+4. Persisting changes to the API
+5. Adding loading indicators to the client app
+6. Caching data in Angular services.
+
+ 
+
+
 ----------------------------------------------------------------------------------------
 
 Study about:
